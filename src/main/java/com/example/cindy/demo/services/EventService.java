@@ -1,5 +1,6 @@
 package com.example.cindy.demo.services;
 
+import com.example.cindy.demo.jpa.entities.DateE;
 import com.example.cindy.demo.jpa.entities.EventC;
 
 
@@ -17,7 +18,7 @@ public interface EventService {
     //Delete event
     EventC cancelEvent(String id);
 
-    EventC modifyEvent(String id, String date);
+    EventC modifyEvent(String id, DateE date);
 
     EventC findByID(String id);
 

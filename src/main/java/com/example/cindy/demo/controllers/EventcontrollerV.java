@@ -15,7 +15,7 @@ public class EventcontrollerV {
     public EventcontrollerV(EventService eventService) {
         this.eventService = eventService;
     }
-
+/*
 
     @GetMapping("/list")
     public String viewHomePage(Model model){
@@ -60,5 +60,5 @@ public class EventcontrollerV {
     public String modifyEvent(@ModelAttribute EventC eventC) {
         eventService.modifyEvent(eventC.getId(), eventC.getDate());
         return "redirect:/list";
-    }
+    }*/
 }

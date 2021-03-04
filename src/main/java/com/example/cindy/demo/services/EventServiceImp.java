@@ -1,5 +1,6 @@
 package com.example.cindy.demo.services;
 
+import com.example.cindy.demo.jpa.entities.DateE;
 import com.example.cindy.demo.jpa.entities.EventC;
 import com.example.cindy.demo.jpa.repositories.EventRepository;
 import constants.StateEvent;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
+
 
 @Service
 public class EventServiceImp implements EventService {
@@ -43,7 +45,7 @@ public class EventServiceImp implements EventService {
     }
 
     @Override
-    public EventC modifyEvent(String id, String date) {
+    public EventC modifyEvent(String id, DateE date) {
         EventC eve = eventRepository.findById(id).orElse(null);
         if(eve == null)
             return null;
@@ -51,6 +53,7 @@ public class EventServiceImp implements EventService {
             eve.setDate(date);
         return eventRepository.save(eve);
     }
+
 
     @Override
     public EventC findByID(String id) {
@@ -60,4 +63,6 @@ public class EventServiceImp implements EventService {
         }
         return eve;
     }
+
 }
+
