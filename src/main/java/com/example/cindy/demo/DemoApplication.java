@@ -35,9 +35,9 @@ public class DemoApplication {
 
         Room room1 = new Room("1", "Salon arquimedes");
         Room room2 = new Room("2", "Salon Gallego");
-        Room room3 = new Room("3", "Salon Gallego");
-        Room room4 = new Room("4", "Salon Gallego");
-        Room room5 = new Room("5", "Salon Gallego");
+        Room room3 = new Room("3", "Salon Gall");
+        Room room4 = new Room("4", "Salon Galle");
+        Room room5 = new Room("5", "Salon Galleg");
         DateE date1 = new DateE("1", "1", "08", "2021");
         DateE date2 = new DateE("2", "5", "08", "2021");
         DateE date3 = new DateE("3", "9", "08", "2021");
@@ -51,10 +51,10 @@ public class DemoApplication {
         EventC event4 = new EventC("4", date4, room4, StateEvent.pendiente);
 
         eventService.createEvent(event1);
-        eventService.createEvent(event2);
+ /*       eventService.createEvent(event2);
         eventService.createEvent(event3);
         eventService.createEvent(event4);
-/*
+
         eventService.cancelEvent("1");
         eventService.modifyEvent("1", date5);*/
     }
