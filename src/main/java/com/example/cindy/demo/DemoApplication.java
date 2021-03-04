@@ -42,7 +42,7 @@ public class DemoApplication {
         eventService.createEvent(event4);
 
         eventService.cancelEvent("1");
-        eventService.ModifyEvent("1", "2020-05-10");
+        eventService.modifyEvent("1", "2020-05-10");
     }
 
 

@@ -1,0 +1,42 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="master">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th id="room">Salón</th>
+                            <th id="date" >Fecha</th>
+                            <th id="state" >Estado</th>
+                            <th id="edit" >Editar</th>
+                        </tr>
+
+                        </thead>
+
+                        <tbody>
+                        <tr th:each="evento: ${listEvents}">
+                            <td th:text="${evento.room}">Salón</td>
+                            <td th:text="${evento.date}">Fecha</td>
+                            <td th:text="${evento.state}">Estado</td>
+                            <td>
+                                <a class="btn btn-warning" th:href="@{/cancel/} + ${evento.id}">Cancelar <i
+                                        class="fa fa-edit"></i></a>
+                            </td>
+                            <td>
+                                <a class="btn btn-warning" th:href="@{/change/} + ${evento.id}">Modificar fecha <i
+                                        class="fa fa-edit"></i></a>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+
+</body>
+</html>

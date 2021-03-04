@@ -17,7 +17,9 @@ public interface EventService {
     //Delete event
     EventC cancelEvent(String id);
 
-    EventC ModifyEvent(String id, String date);
+    EventC modifyEvent(String id, String date);
+
+    EventC findByID(String id);
 
 
 

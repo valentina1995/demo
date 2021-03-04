@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+<h1>Form</h1>
+<form action="#" th:action="@{/change/{id}(id=${eventEdit.id})/{date}(date=${eventEdit.getDate()})}" th:object="${eventEdit}" method="post">
+
+
+    <p>Id: <input type="text" th:field="*{id}" /></p>
+    <p>Fecha: <input type="text" th:field="*{date}" /></p>
+    <p>Salon: <input type="text" th:field="*{room}" /></p>
+    <p>Estado: <input type="text" th:field="*{state}" /></p>
+
+    <p><input type="submit" value="Update" />
+
+</form>
+</body>
+</html>

@@ -43,12 +43,21 @@ public class EventServiceImp implements EventService {
     }
 
     @Override
-    public EventC ModifyEvent(String id, String date) {
+    public EventC modifyEvent(String id, String date) {
         EventC eve = eventRepository.findById(id).orElse(null);
         if(eve == null)
             return null;
         else
             eve.setDate(date);
         return eventRepository.save(eve);
+    }
+
+    @Override
+    public EventC findByID(String id) {
+        EventC eve= eventRepository.findById(id).orElse(null);
+        if(eve == null){
+            return null;
+        }
+        return eve;
     }
 }
