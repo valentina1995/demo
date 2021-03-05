@@ -65,7 +65,7 @@ public class RoomServiceImp implements RoomService{
         eventC.setName(eventDTO.getName());
         try {
             Date eventDate = parseEventDate(eventDTO.getDate());
-            eventC.setDate(new DateE(eventDate));
+            eventC.setDate(eventDate);
             Room room = parseRoom(eventDTO.getRoomId());
             eventC.setRoom(room);
         } catch (ParseException e) {

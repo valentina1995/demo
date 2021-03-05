@@ -33,7 +33,6 @@ public class EventcontrollerV {
 
     @GetMapping("/list")
     public String viewHomePage(Model model){
-        List<EventC> eventCS = eventService.getEvents();
 
         model.addAttribute("listEvents", eventService.getEvents() );
 

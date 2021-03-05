@@ -33,18 +33,24 @@ public class InitializeTestData {
         Room room1 = new Room("Arquimedes");
         Room room2 = new Room("hermes");
         Room room3 = new Room("acuario");
+        Room room4 = new Room("acuario2");
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
 
-        DateE date1 = new DateE(new Date("2021-02-01"));
-        DateE date2 = new DateE(new Date("2021-05-06"));
-        DateE date3 = new DateE(new Date("2021-07-02"));
+        Date date1 = formatter.parse("2021-02-01");
+        Date date2 = formatter.parse("2021-05-06");
+        Date date3 = formatter.parse("2021-07-02");
+        Date date4 = formatter.parse("2021-07-03");
 
 
-        eventService.createEvent(new EventC("Cumpleaños", date1, room1, StateEvent.pendiente));
-        eventService.createEvent(new EventC("15", date2, room2, StateEvent.pendiente));
-        eventService.createEvent(new EventC("grado", date3, room3, StateEvent.pendiente));
-        eventService.createEvent(new EventC("50", date3, room1, StateEvent.pendiente));
+        try {
+            eventService.createEvent(new EventC("Cumpleaños", date1, room1, StateEvent.pendiente));
+            eventService.createEvent(new EventC("15", date2, room2, StateEvent.pendiente));
+            eventService.createEvent(new EventC("grado", date3, room3, StateEvent.pendiente));
+            eventService.createEvent(new EventC("50", date4, room4, StateEvent.pendiente));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }

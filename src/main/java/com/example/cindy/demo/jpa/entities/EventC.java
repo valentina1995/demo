@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
+
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Data
@@ -12,22 +15,24 @@ import javax.persistence.*;
 
 public class EventC {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=SEQUENCE)
     private long id;
     private String name;
-    @OneToOne(cascade = CascadeType.ALL)
-    private DateE date;
-    @ManyToOne
+    private Date date;
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Room room;
     private StateEvent state;
 
-    public EventC(String name, DateE date, Room room) {
+    public EventC(String name, Date date, Room room) {
         this.name = name;
         this.date = date;
         this.room = room;
     }
 
-    public EventC(String name, DateE date, Room room, StateEvent state) {
+    public EventC(String name, Date date, Room room, StateEvent state) {
+        this.name = name;
+        this.date = date;
+        this.room = room;
+        this.state = state;
     }
-
 }
