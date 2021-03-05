@@ -8,13 +8,27 @@
 <body>
 
 <h1>Form</h1>
-<form action="#" th:action="@{/create}" th:object="${eventC}" method="post">
+<form action="#" th:action="@{/create}"  method="post" th:object="${eventDTO}">
+
+    <p>Nombre: <input type="text" th:field ="*{name}" name ="name"/></p>
+    <p>Fecha: <input type="date" th:field ="*{date}" name ="date"/></p>
+    <label>Profession:</label>
 
 
-    <p>Id: <input type="text" th:field="*{id}" /></p>
-    <p>Fecha: <input type="text" th:field="*{date}" /></p>
-    <p>Salon: <input type="text" th:field="*{room}" /></p>
-    <p>Estado: <input type="text" th:field="*{state}" /></p>
+<!--    <select th:field="*{room}" >-->
+<!--        <option th:each="p : ${roomList}" th:value="${p}" th:text="${p}" />-->
+<!--    </select>-->
+
+
+<!--    <label>Gender:</label>-->
+<!--    <input type="radio" th:field="*{state}" value="pendiente" />Male-->
+<!--    <input type="radio" th:field="*{state}" value="Finalizado" />Female<br/>-->
+<!--    <input type="radio" th:field="*{state}" value="cancelado" />Female<br/>-->
+
+    <select th:field="${eventDTO.roomId}" >
+        <option value="0">select room</option>
+        <option th:each="room : ${roomList}" th:value="${room.id}" th:text="${room.name}"></option>
+    </select>
 
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 

@@ -26,16 +26,16 @@ public class EventServiceImp implements EventService {
     }
 
     @Override
-    public Boolean createEvent(EventC event) {
-        if(event != null){
-            eventRepository.save(event);
+    public Boolean createEvent(EventC eve) {
+        if(eve != null){
+            eventRepository.save(eve);
             return true;}
         else
             return false;
     }
 
     @Override
-    public EventC cancelEvent(String id) {
+    public EventC cancelEvent(Long id) {
        EventC eve = eventRepository.findById(id).orElse(null);
        if (eve == null)
            return null;
@@ -45,7 +45,7 @@ public class EventServiceImp implements EventService {
     }
 
     @Override
-    public EventC modifyEvent(String id, DateE date) {
+    public EventC modifyEvent(Long id, DateE date) {
         EventC eve = eventRepository.findById(id).orElse(null);
         if(eve == null)
             return null;
@@ -56,7 +56,7 @@ public class EventServiceImp implements EventService {
 
 
     @Override
-    public EventC findByID(String id) {
+    public EventC findByID(Long id) {
         EventC eve= eventRepository.findById(id).orElse(null);
         if(eve == null){
             return null;

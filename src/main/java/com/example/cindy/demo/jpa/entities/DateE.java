@@ -3,18 +3,23 @@ package com.example.cindy.demo.jpa.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
+
 
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class DateE {
     @Id
-    private String id;
-    private String day;
-    private String month;
-    private String year;
+    @GeneratedValue
+    private long id;
+    @Temporal(TemporalType.DATE)
+    private Date date;
+
+    public DateE(Date date) {
+        this.date = date;
+    }
 }

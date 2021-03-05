@@ -1,53 +1,84 @@
 package com.example.cindy.demo.controllers;
 
+import com.example.cindy.demo.dto.EventDTO;
 import com.example.cindy.demo.jpa.entities.EventC;
+import com.example.cindy.demo.jpa.entities.Room;
+import com.example.cindy.demo.services.DateEService;
 import com.example.cindy.demo.services.EventService;
+import com.example.cindy.demo.services.RoomService;
+import com.example.cindy.demo.utils.EventConversors;
+import constants.StateEvent;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.text.ParseException;
+import java.util.List;
 
 @Controller
 @RequestMapping
 public class EventcontrollerV {
 
     final EventService eventService;
+    final RoomService roomService;
+    final DateEService dateEService;
 
-    public EventcontrollerV(EventService eventService) {
+    public EventcontrollerV(EventService eventService, RoomService roomService, DateEService dateEService) {
         this.eventService = eventService;
+        this.roomService = roomService;
+        this.dateEService = dateEService;
     }
-/*
+
 
     @GetMapping("/list")
     public String viewHomePage(Model model){
+        List<EventC> eventCS = eventService.getEvents();
+
         model.addAttribute("listEvents", eventService.getEvents() );
+
         return "allEvents";
 
     }
 
 
-    @PostMapping("/create")
-    public String createEvent(@ModelAttribute EventC eventC) {
-        eventService.createEvent(eventC);
-        return "createEvent";
-    }
     @GetMapping("/create")
-    public String createEvent(Model model) {
-        model.addAttribute("eventC", new EventC() );
+    public ModelAndView createEvent() throws ParseException {
+
+        ModelAndView modelAndView = new ModelAndView("createEvent");
+
+        List<Room> roomList = roomService.getRooms();
+        modelAndView.addObject("roomList",roomList);
+        modelAndView.addObject("eventDTO",new EventDTO());
+
+        return modelAndView;
+    }
+
+    @PostMapping("/create")
+    public String createEvent(EventDTO eventDTO) {
+
+        EventC event = roomService.convertRoomDTOtoEntity(eventDTO);
+        event.setState(StateEvent.pendiente);
+        eventService.createEvent(event);
+
         return "createEvent";
     }
 
+
+
     @GetMapping("/cancel/{id}")
-    public  String cancelEvent(Model model, @PathVariable String id){
+    public  String cancelEvent(Model model, @PathVariable Long id){
         EventC eve = eventService.findByID(id);
         model.addAttribute("eventEdit", eve);
         return "cancelEvent";
     }
     @PostMapping("/cancel/{id}")
-    public String cancelEvent( @ModelAttribute EventC eventC) {
-        eventService.cancelEvent(eventC.getId());
+    public String cancelEvent( EventDTO eventDTO) {
+        EventC event = roomService.convertRoomDTOtoEntity(eventDTO);
+        eventService.cancelEvent(event.getId());
         return "redirect:/list";
     }
-
+/*
 
     @GetMapping("/change/{id}")
     public  String modifyEvent(Model model, @PathVariable String id){

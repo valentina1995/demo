@@ -9,18 +9,18 @@ import java.util.List;
 public interface EventService {
 
 
-  //List events
+    //List events
     List<EventC> getEvents();
 
     //Create event
     Boolean createEvent(EventC event);
 
     //Delete event
-    EventC cancelEvent(String id);
+    EventC cancelEvent(Long id);
 
-    EventC modifyEvent(String id, DateE date);
+    EventC modifyEvent(Long id, DateE date);
 
-    EventC findByID(String id);
+    EventC findByID(Long id);
 
 
 

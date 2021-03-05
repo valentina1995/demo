@@ -1,32 +1,33 @@
 package com.example.cindy.demo.jpa.entities;
 
 import constants.StateEvent;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
+import javax.persistence.*;
 
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+
 public class EventC {
     @Id
-    private String id;
-    @OneToOne
+    @GeneratedValue
+    private long id;
+    private String name;
+    @OneToOne(cascade = CascadeType.ALL)
     private DateE date;
     @ManyToOne
     private Room room;
     private StateEvent state;
 
+    public EventC(String name, DateE date, Room room) {
+        this.name = name;
+        this.date = date;
+        this.room = room;
+    }
 
-
-
-
-
+    public EventC(String name, DateE date, Room room, StateEvent state) {
+    }
 
 }
