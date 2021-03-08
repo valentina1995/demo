@@ -21,6 +21,7 @@
 
                         <tbody>
                         <tr th:each="evento: ${listEvents}">
+                            <td th:text="${evento.name}">Nombre</td>
                             <td th:text="${evento.room.name}">Salón</td>
                             <td th:text="${evento.date}">Fecha</td>
                             <td th:text="${evento.state}">Estado</td>

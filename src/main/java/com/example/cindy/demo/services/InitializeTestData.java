@@ -1,27 +1,21 @@
 package com.example.cindy.demo.services;
-import com.example.cindy.demo.jpa.entities.DateE;
 import com.example.cindy.demo.jpa.entities.EventC;
 import com.example.cindy.demo.jpa.entities.Room;
 import constants.StateEvent;
 import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.Date;
 
 @Component
 public class InitializeTestData {
 
     private final RoomService roomService;
-    private final DateEServiceImp dateEService;
     private final EventService eventService;
 
-    public InitializeTestData(RoomService roomService, DateEServiceImp dateEService, EventService eventService) {
+    public InitializeTestData(RoomService roomService,  EventService eventService) {
         this.roomService = roomService;
-        this.dateEService = dateEService;
         this.eventService = eventService;
     }
 

@@ -3,10 +3,8 @@ package com.example.cindy.demo.controllers;
 import com.example.cindy.demo.dto.EventDTO;
 import com.example.cindy.demo.jpa.entities.EventC;
 import com.example.cindy.demo.jpa.entities.Room;
-import com.example.cindy.demo.services.DateEService;
 import com.example.cindy.demo.services.EventService;
 import com.example.cindy.demo.services.RoomService;
-import com.example.cindy.demo.utils.EventConversors;
 import constants.StateEvent;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,12 +20,10 @@ public class EventcontrollerV {
 
     final EventService eventService;
     final RoomService roomService;
-    final DateEService dateEService;
 
-    public EventcontrollerV(EventService eventService, RoomService roomService, DateEService dateEService) {
+    public EventcontrollerV(EventService eventService, RoomService roomService) {
         this.eventService = eventService;
         this.roomService = roomService;
-        this.dateEService = dateEService;
     }
 
 
@@ -48,6 +44,7 @@ public class EventcontrollerV {
 
         List<Room> roomList = roomService.getRooms();
         modelAndView.addObject("roomList",roomList);
+
         modelAndView.addObject("eventDTO",new EventDTO());
 
         return modelAndView;
@@ -72,7 +69,8 @@ public class EventcontrollerV {
         return "cancelEvent";
     }
     @PostMapping("/cancel/{id}")
-    public String cancelEvent( EventDTO eventDTO) {
+    public String cancelEvent(@ModelAttribute EventDTO eventDTO) {
+
         EventC event = roomService.convertRoomDTOtoEntity(eventDTO);
         eventService.cancelEvent(event.getId());
         return "redirect:/list";
