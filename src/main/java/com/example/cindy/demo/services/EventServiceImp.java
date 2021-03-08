@@ -66,6 +66,15 @@ public class EventServiceImp implements EventService {
         }
         return eve;
     }
+    @Override
+    public List<Date> filterByRoom(Long id) {
+        List<Date> dates = filterByRoom(id);
+        if(dates == null)
+            return null;
+
+        return dates;
+    }
+
 
 }
 

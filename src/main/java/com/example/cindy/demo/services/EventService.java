@@ -1,6 +1,8 @@
 package com.example.cindy.demo.services;
 
 import com.example.cindy.demo.jpa.entities.EventC;
+import com.example.cindy.demo.jpa.entities.Room;
+import org.springframework.data.jpa.repository.Query;
 
 
 import java.util.Date;
@@ -21,6 +23,8 @@ public interface EventService {
     EventC modifyEvent(Long id, java.sql.Date date);
 
     EventC findByID(Long id);
+
+    List<Date> filterByRoom(Long id);
 
 
 

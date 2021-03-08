@@ -7,9 +7,9 @@ import com.example.cindy.demo.jpa.repositories.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -18,6 +18,9 @@ public class RoomServiceImp implements RoomService{
 
     @Autowired
     RoomRepository roomRepository;
+
+    @Autowired
+    EventService eventService;
 
     @Override
     public boolean createRoom(Room room) {
@@ -58,36 +61,6 @@ public class RoomServiceImp implements RoomService{
         return roomRepository.findById(id).orElse(null);
     }
 
-    @Override
-    public EventC convertRoomDTOtoEntity(EventDTO eventDTO) {
-        return null;
-    }
 
-
-/*    public EventC convertRoomDTOtoEntity(EventDTO eventDTO){
-        EventC eventC = new EventC();
-        eventC.setName(eventDTO.getName());
-        try {
-            Date eventDate = parseEventDate(eventDTO.getDate());
-            eventC.setDate(eventDate);
-            Room room = parseRoom(eventDTO.getRoomId());
-            eventC.setRoom(room);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-//        eventC.setRoom(this.room);
-//        eventC.setState(state);
-        return eventC;
-    }
-
-    private Date parseEventDate(String eventDateString) throws ParseException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date eventDate = formatter.parse(eventDateString);
-        return eventDate;
-    }*/
-
-    private Room parseRoom(Long roomId){
-        return roomRepository.findById(roomId).orElse(null);
-    }
 
 }

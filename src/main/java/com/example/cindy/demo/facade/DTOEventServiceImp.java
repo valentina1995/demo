@@ -30,21 +30,6 @@ public class DTOEventServiceImp implements DTOEventService {
 
     ModelMapper modelMapper = new ModelMapper();
 
-/*    public EventC convertDTOtoEntity(EventDTO eventDTO){
-        EventC eventC = new EventC();
-        eventC.setName(eventDTO.getName());
-        try {
-            Date eventDate = parseEventDate(eventDTO.getDate());
-            eventC.setDate(eventDate);
-            Room room = parseRoom(eventDTO.getRoomId());
-            eventC.setRoom(room);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        eventC.setState(eventC.getState());
-        eventC.setId(eventDTO.getId());
-        return eventC;
-    }*/
 
     @Override
     public EventC convertDTOtoEntity(EventDTO eventDTO) {
@@ -111,6 +96,12 @@ public class DTOEventServiceImp implements DTOEventService {
         }
 
         return eventDTO;
+    }
+
+    @Override
+    public List<Date> filterByRoom(Long id) {
+
+        return eventService.filterByRoom(id);
     }
 
     private Date parseEventDate(String eventDateString) throws ParseException {

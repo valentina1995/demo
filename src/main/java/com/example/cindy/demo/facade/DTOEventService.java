@@ -29,6 +29,8 @@ public interface DTOEventService {
 
     EventDTO findByID(Long id);
 
+    List<Date>filterByRoom(Long id);
+
 
 
 }

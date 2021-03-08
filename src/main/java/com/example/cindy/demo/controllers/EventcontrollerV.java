@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -42,6 +43,8 @@ public class EventcontrollerV {
 
         List<RoomDTO> roomList = dtoRoomService.getRooms();
         modelAndView.addObject("roomList",roomList);
+
+        //List<Date> busyDates = dtoEventService.filterByRoom(roomList.get());
 
         modelAndView.addObject("eventDTO",new EventDTO());
 
@@ -86,4 +89,20 @@ public class EventcontrollerV {
         dtoEventService.modifyEvent(eventDTO.getId(), eventDTO.getDate());
         return "redirect:/list";
     }
+
+    @GetMapping("/chooseRoom")
+    public String chooseRoom(Model model){
+
+        List<RoomDTO> roomList = dtoRoomService.getRooms();
+        model.addAttribute("roomList",roomList);
+
+        return "chooseRoom";
+    }
+    @PostMapping("/chooseRoom/{id}")
+    public String chooseRoom(Model model,  @PathVariable Long id) {
+       List<Date> dates = dtoEventService.filterByRoom(id);
+       model.addAttribute("dates", dates);
+        return "redirect:/chooseRoom";
+    }
+
 }

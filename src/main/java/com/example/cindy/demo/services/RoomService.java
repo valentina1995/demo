@@ -1,8 +1,8 @@
 package com.example.cindy.demo.services;
 
-import com.example.cindy.demo.dto.EventDTO;
-import com.example.cindy.demo.jpa.entities.EventC;
 import com.example.cindy.demo.jpa.entities.Room;
+
+import java.sql.Date;
 import java.util.List;
 
 public interface RoomService {
@@ -20,5 +20,5 @@ public interface RoomService {
 
     Room findByID(Long id);
 
-    EventC convertRoomDTOtoEntity(EventDTO eventDTO);
+
 }
