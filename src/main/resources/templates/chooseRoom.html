@@ -16,7 +16,7 @@
 
 
 
-    <form action="#" th:action="@{/chooseRoom/{id}(id = ${roomList.id})}" th:object="${roomList}">
+    <form action="#" th:action="@{/chooseRoom}" th:object="${roomList}">
     <select class="form-control form-control-lg selective" aria-label=".form-select-lg"  >
               <!--/*@thymesVar id="name" type=""*/-->
             <option th:each="p : ${roomList}"
@@ -29,10 +29,10 @@
 
 
 
-    <form action="#" th:action="@{/chooseRoom/{id}(id = ${roomList.id})} " th:object="${dates}">
+    <form action="#" th:action="@{/chooseRoom} " >
     <select class="form-control form-control-lg" aria-label=".form-select-lg"  >
         <!--/*@thymesVar id="name" type=""*/-->
-        <option th:each="p : ${dates}" th:value="${p}" th:text="${p}" />
+       //<!-- <option th:each="p : ${dates}" th:value="${p}" th:text="${p}" />-->
     </select>
 
     </form>
