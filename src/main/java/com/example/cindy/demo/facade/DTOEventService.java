@@ -2,11 +2,16 @@ package com.example.cindy.demo.facade;
 
 import com.example.cindy.demo.dto.EventDTO;
 import com.example.cindy.demo.jpa.entities.EventC;
+import constants.StateEvent;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
-public interface IdtoServiceEvent {
+
+@Service
+public interface DTOEventService {
 
     EventC convertDTOtoEntity(EventDTO eventDTO);
 
@@ -20,9 +25,10 @@ public interface IdtoServiceEvent {
     //Delete event
     EventDTO cancelEvent(Long id);
 
-    EventDTO modifyEvent(Long id, Date date);
+    EventDTO modifyEvent(Long id, String date);
 
     EventDTO findByID(Long id);
+
 
 
 }

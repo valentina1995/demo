@@ -58,8 +58,13 @@ public class RoomServiceImp implements RoomService{
         return roomRepository.findById(id).orElse(null);
     }
 
+    @Override
+    public EventC convertRoomDTOtoEntity(EventDTO eventDTO) {
+        return null;
+    }
 
-    public EventC convertRoomDTOtoEntity(EventDTO eventDTO){
+
+/*    public EventC convertRoomDTOtoEntity(EventDTO eventDTO){
         EventC eventC = new EventC();
         eventC.setName(eventDTO.getName());
         try {
@@ -79,7 +84,7 @@ public class RoomServiceImp implements RoomService{
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date eventDate = formatter.parse(eventDateString);
         return eventDate;
-    }
+    }*/
 
     private Room parseRoom(Long roomId){
         return roomRepository.findById(roomId).orElse(null);

@@ -1,5 +1,6 @@
 package com.example.cindy.demo.services;
-import com.example.cindy.demo.jpa.entities.EventC;
+import com.example.cindy.demo.dto.EventDTO;
+import com.example.cindy.demo.facade.DTOEventService;
 import com.example.cindy.demo.jpa.entities.Room;
 import constants.StateEvent;
 import org.springframework.stereotype.Component;
@@ -13,10 +14,12 @@ public class InitializeTestData {
 
     private final RoomService roomService;
     private final EventService eventService;
+    private final DTOEventService dtoEventService;
 
-    public InitializeTestData(RoomService roomService,  EventService eventService) {
+    public InitializeTestData(RoomService roomService, EventService eventService, DTOEventService dtoEventService) {
         this.roomService = roomService;
         this.eventService = eventService;
+        this.dtoEventService = dtoEventService;
     }
 
     @PostConstruct
@@ -28,23 +31,19 @@ public class InitializeTestData {
         Room room2 = new Room("hermes");
         Room room3 = new Room("acuario");
         Room room4 = new Room("acuario2");
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
 
-        Date date1 = formatter.parse("2021-02-01");
-        Date date2 = formatter.parse("2021-05-06");
-        Date date3 = formatter.parse("2021-07-02");
-        Date date4 = formatter.parse("2021-07-03");
+        roomService.createRoom(room1);
+        roomService.createRoom(room2);
+        roomService.createRoom(room3);
+        roomService.createRoom(room4);
+
+        dtoEventService.createEvent(new EventDTO("Cumpleaños", "2020-02-01", room1.getId(), StateEvent.pendiente));
+        dtoEventService.createEvent(new EventDTO("Fiesta de grado", "2020-02-14", room2.getId(), StateEvent.pendiente));
+        dtoEventService.createEvent(new EventDTO("primera comunión", "2020-02-30", room3.getId(), StateEvent.pendiente));
 
 
-        try {
-            eventService.createEvent(new EventC("Cumpleaños", date1, room1, StateEvent.pendiente));
-            eventService.createEvent(new EventC("15", date2, room2, StateEvent.pendiente));
-            eventService.createEvent(new EventC("grado", date3, room3, StateEvent.pendiente));
-            eventService.createEvent(new EventC("50", date4, room4, StateEvent.pendiente));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
 
 
     }

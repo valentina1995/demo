@@ -18,18 +18,18 @@ public class EventC {
     @GeneratedValue(strategy=SEQUENCE)
     private long id;
     private String name;
-    private Date date;
-    @ManyToOne(cascade = {CascadeType.ALL})
+    private java.sql.Date date;
+    @ManyToOne
     private Room room;
     private StateEvent state;
 
-    public EventC(String name, Date date, Room room) {
+    public EventC(String name, java.sql.Date date, Room room) {
         this.name = name;
         this.date = date;
         this.room = room;
     }
 
-    public EventC(String name, Date date, Room room, StateEvent state) {
+    public EventC(String name, java.sql.Date date, Room room, StateEvent state) {
         this.name = name;
         this.date = date;
         this.room = room;

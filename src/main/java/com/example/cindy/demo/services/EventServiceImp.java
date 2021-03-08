@@ -35,7 +35,8 @@ public class EventServiceImp implements EventService {
             return false;
     }
 
-    @Override
+
+   @Override
     public EventC cancelEvent(Long id) {
        EventC eve = eventRepository.findById(id).orElse(null);
        if (eve == null)
@@ -45,8 +46,9 @@ public class EventServiceImp implements EventService {
        return eventRepository.save(eve);
     }
 
+
     @Override
-    public EventC modifyEvent(Long id, Date date) {
+    public EventC modifyEvent(Long id, java.sql.Date date) {
         EventC eve = eventRepository.findById(id).orElse(null);
         if(eve == null)
             return null;

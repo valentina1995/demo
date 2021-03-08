@@ -18,7 +18,7 @@ public interface EventService {
     //Delete event
     EventC cancelEvent(Long id);
 
-    EventC modifyEvent(Long id, Date date);
+    EventC modifyEvent(Long id, java.sql.Date date);
 
     EventC findByID(Long id);
 

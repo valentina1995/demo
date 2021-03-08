@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Salón</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<h1>Form</h1>
+<form action="#" th:action="@{/createRoom}"  method="post" th:object="${roomDTO}">
+
+    <p>Nombre: <input type="text" th:field ="*{name}" name ="name"/></p>
+
+
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+
+</form>
+</body>
+</html>
